@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Bridge Extension</title>
+    <link rel="stylesheet" href="styles_signup_redesigned.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Signup Panel -->
+        <div id="auth-panel" class="auth-container">
+            <div class="auth-box">
+                <!-- Logo -->
+                <div class="auth-header">
+                    <h1 class="logo">AI Bridge</h1>
+                    <p class="subtext">Create your account to get started.</p>
+                </div>
+
+                <!-- Signup Form -->
+                <div id="signup-form" class="auth-form" role="form" aria-labelledby="signup-heading">
+                    <h2 id="signup-heading" class="sr-only">Sign Up Form</h2>
+
+                    <!-- Two-Column Layout for Name and Email -->
+                    <div class="form-row">
+                        <div class="form-group half-width">
+                            <div class="floating-input">
+                                <span class="input-icon">👤</span>
+                                <input type="text" id="signup-name" required aria-describedby="signup-name-error">
+                                <label for="signup-name">Full Name</label>
+                                <span class="success-check hidden">✓</span>
+                            </div>
+                            <span class="validation-message" id="signup-name-error" aria-live="polite"></span>
+                        </div>
+
+                        <div class="form-group half-width">
+                            <div class="floating-input">
+                                <span class="input-icon">✉️</span>
+                                <input type="email" id="signup-email" required aria-describedby="signup-email-error">
+                                <label for="signup-email">Email</label>
+                                <span class="success-check hidden">✓</span>
+                            </div>
+                            <span class="validation-message" id="signup-email-error" aria-live="polite"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="floating-input">
+                            <span class="input-icon">🔒</span>
+                            <input type="password" id="signup-password" required aria-describedby="signup-password-error">
+                            <label for="signup-password">Password</label>
+                            <button type="button" class="password-toggle-btn" id="toggle-signup-passwords" aria-label="Toggle password visibility for both fields">
+                                <svg class="eye-icon" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.91444 7.59106C4.3419 9.04124 3.28865 10.7415 2.77052 11.6971C2.66585 11.8902 2.66585 12.1098 2.77052 12.3029C3.28865 13.2585 4.3419 14.9588 5.91444 16.4089C7.48195 17.8545 9.50572 19 12 19C14.4943 19 16.518 17.8545 18.0855 16.4089C19.6581 14.9588 20.7113 13.2585 21.2295 12.3029C21.3341 12.1098 21.3341 11.8902 21.2295 11.6971C20.7113 10.7415 19.6581 9.04124 18.0855 7.59105C16.518 6.1455 14.4943 5 12 5C9.50572 5 7.48195 6.1455 5.91444 7.59106ZM4.55857 6.1208C6.36059 4.45899 8.84581 3 12 3C15.1542 3 17.6394 4.45899 19.4414 6.1208C21.2384 7.77798 22.4152 9.68799 22.9877 10.7438C23.4147 11.5315 23.4147 12.4685 22.9877 13.2562C22.4152 14.312 21.2384 16.222 19.4414 17.8792C17.6394 19.541 15.1542 21 12 21C8.84581 21 6.36059 19.541 4.55857 17.8792C2.76159 16.222 1.58478 14.312 1.01232 13.2562C0.58525 12.4685 0.585249 11.5315 1.01232 10.7438C1.58478 9.688 2.76159 7.77798 4.55857 6.1208ZM12 9.5C10.6193 9.5 9.49999 10.6193 9.49999 12C9.49999 13.3807 10.6193 14.5 12 14.5C13.3807 14.5 14.5 13.3807 14.5 12C14.5 10.6193 13.3807 9.5 12 9.5ZM7.49999 12C7.49999 9.51472 9.51471 7.5 12 7.5C14.4853 7.5 16.5 9.51472 16.5 12C16.5 14.4853 14.4853 16.5 12 16.5C9.51471 16.5 7.49999 14.4853 7.49999 12Z" fill="currentColor"></path>
+                                </svg>
+                                <svg class="eye-off-icon hidden" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M2.29291 2.29289C2.68343 1.90237 3.3166 1.90237 3.70712 2.29289L21.7071 20.2929C22.0976 20.6834 22.0976 21.3166 21.7071 21.7071C21.3166 22.0976 20.6834 22.0976 20.2929 21.7071L17.7785 19.1927C16.2039 20.2404 14.274 21 12 21C8.84584 21 6.36062 19.541 4.5586 17.8792C2.76162 16.222 1.58481 14.312 1.01235 13.2562C0.585075 12.4681 0.585779 11.5305 1.01269 10.7432C1.5904 9.67778 2.79205 7.72646 4.63588 6.05008L2.29291 3.70711C1.90238 3.31658 1.90238 2.68342 2.29291 2.29289ZM6.05192 7.46612C4.40725 8.93862 3.30718 10.7074 2.77085 11.6965C2.66598 11.8899 2.66608 12.1102 2.77055 12.3029C3.28868 13.2585 4.34193 14.9588 5.91447 16.4089C7.48198 17.8545 9.50575 19 12 19C13.6494 19 15.09 18.5001 16.3303 17.7445L14.396 15.8102C12.6575 16.9057 10.3324 16.6963 8.81803 15.182C7.3037 13.6676 7.09428 11.3425 8.18977 9.60397L6.05192 7.46612ZM9.67223 11.0864L12.9136 14.3278C12.0164 14.6793 10.9571 14.4927 10.2322 13.7678C9.50734 13.0429 9.32067 11.9836 9.67223 11.0864Z" fill="currentColor"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <span class="validation-message" id="signup-password-error" aria-live="polite"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="floating-input">
+                            <span class="input-icon">🔒</span>
+                            <input type="password" id="signup-confirm-password" required aria-describedby="signup-confirm-password-error">
+                            <label for="signup-confirm-password">Confirm Password</label>
+                            <span class="success-check hidden">✓</span>
+                        </div>
+                        <span class="validation-message" id="signup-confirm-password-error" aria-live="polite"></span>
+                    </div>
+
+                    <button type="button" class="auth-btn" id="signup-btn">Sign Up</button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Main script -->
+    <script src="script.js"></script>
+</body>
+</html>
+

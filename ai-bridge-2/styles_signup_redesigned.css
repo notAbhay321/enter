@@ -1,0 +1,673 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Screen Reader Only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* App Container */
+#app {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Auth Panel Styles */
+.auth-container {
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    animation: slideIn 0.6s ease-out;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+.auth-container:hover {
+    transform: scale(1.02);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.auth-box {
+    padding: 32px 28px 28px;
+}
+
+/* Header Styles - Enhanced Logo */
+.auth-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.logo {
+    color: #667eea;
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 8px;
+    letter-spacing: -0.03em;
+    text-shadow: 0 2px 4px rgba(102, 126, 234, 0.2);
+    transition: all 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+    text-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+}
+
+.subtext {
+    color: #6b7280;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+/* Form Styles */
+.auth-form {
+    transition: all 0.4s ease;
+}
+
+.auth-form.hidden {
+    display: none;
+}
+
+/* Form Row for Two-Column Layout */
+.form-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.form-group {
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.form-group.half-width {
+    flex: 1;
+}
+
+/* Floating Input Container */
+.floating-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 6px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 52px;
+}
+
+.floating-input:hover {
+    border-color: #cbd5e1;
+    background: #f1f5f9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.floating-input:focus-within {
+    border-color: #667eea;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
+    transform: translateY(-1px);
+}
+
+/* Input Icon */
+.input-icon {
+    position: absolute;
+    left: 14px;
+    font-size: 1.2rem;
+    color: #9ca3af;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.floating-input:focus-within .input-icon {
+    color: #667eea;
+    transform: scale(1.1);
+}
+
+/* Input Field */
+.floating-input input {
+    width: 100%;
+    height: 100%;
+    padding: 22px 14px 8px 42px;
+    border: none;
+    background: transparent;
+    font-size: 0.95rem;
+    color: #1f2937;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.floating-input input:focus {
+    color: #111827;
+}
+
+/* Floating Label */
+.floating-input label {
+    position: absolute;
+    left: 42px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.95rem;
+    color: #9ca3af;
+    font-weight: 500;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+}
+
+.floating-input input:focus + label,
+.floating-input input:not(:placeholder-shown) + label,
+.floating-input input:valid + label {
+    top: 18px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #667eea;
+    transform: translateY(0);
+}
+
+/* Success Check */
+.success-check {
+    position: absolute;
+    right: 42px;
+    color: #10b981;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    transform: scale(0);
+}
+
+.success-check.hidden {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.success-check:not(.hidden) {
+    opacity: 1;
+    transform: scale(1);
+    animation: bounce 0.5s ease;
+}
+
+@keyframes bounce {
+    0%, 20%, 53%, 80%, 100% {
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        transform: scale(1);
+    }
+    40%, 43% {
+        animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        transform: scale(1.2);
+    }
+    70% {
+        animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        transform: scale(1.1);
+    }
+    90% {
+        transform: scale(1.05);
+    }
+}
+
+/* Password Toggle Button - Modern Redesign */
+.password-toggle-btn {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    z-index: 3;
+}
+
+.password-toggle-btn:hover {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    transform: scale(1.1);
+}
+
+.password-toggle-btn:focus {
+    outline: none;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+}
+
+.password-toggle-btn:active {
+    transform: scale(0.95);
+}
+
+.eye-icon,
+.eye-off-icon {
+    width: 20px;
+    height: 20px;
+    color: #6b7280;
+    transition: all 0.3s ease;
+}
+
+.password-toggle-btn:hover .eye-icon,
+.password-toggle-btn:hover .eye-off-icon {
+    color: #667eea;
+}
+
+/* Validation Messages - Color Coded */
+.validation-message {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 4px;
+    margin-left: 2px;
+    min-height: 1rem;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(-5px);
+}
+
+.validation-message:not(:empty) {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.validation-message.error {
+    color: #ef4444;
+}
+
+.validation-message.success {
+    color: #10b981;
+}
+
+.validation-message.warning {
+    color: #f59e0b;
+}
+
+/* Input Validation States */
+.floating-input.valid {
+    border-color: #10b981;
+    background: #f0fdf4;
+}
+
+.floating-input.invalid {
+    border-color: #ef4444;
+    background: #fef2f2;
+}
+
+.floating-input.warning {
+    border-color: #f59e0b;
+    background: #fffbeb;
+}
+
+.floating-input.valid:focus-within {
+    border-color: #10b981;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15);
+}
+
+.floating-input.invalid:focus-within {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.15);
+}
+
+.floating-input.warning:focus-within {
+    border-color: #f59e0b;
+    box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.15);
+}
+
+/* Button Styles - Enhanced */
+.auth-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 16px;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.auth-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.auth-btn:hover::before {
+    left: 100%;
+}
+
+.auth-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+}
+
+.auth-btn:active {
+    transform: translateY(-1px);
+}
+
+.auth-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.3);
+}
+
+.auth-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Loading State */
+.auth-btn.loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.auth-btn.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 2px solid transparent;
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Password Strength Indicator - Real-time */
+.password-strength-indicator {
+    margin-top: 6px;
+    margin-left: 2px;
+}
+
+.strength-bars {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+.strength-bar {
+    height: 4px;
+    flex: 1;
+    background: #e5e7eb;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.strength-bar.weak {
+    background: #ef4444;
+}
+
+.strength-bar.fair {
+    background: #f59e0b;
+}
+
+.strength-bar.good {
+    background: #10b981;
+}
+
+.strength-bar.strong {
+    background: #059669;
+}
+
+.strength-text {
+    font-size: 0.75rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.strength-text.weak {
+    color: #ef4444;
+}
+
+.strength-text.fair {
+    color: #f59e0b;
+}
+
+.strength-text.good {
+    color: #10b981;
+}
+
+.strength-text.strong {
+    color: #059669;
+}
+
+/* Password Match Indicator */
+.password-match-indicator {
+    margin-top: 4px;
+    margin-left: 2px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(-5px);
+}
+
+.password-match-indicator.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.password-match-indicator.match {
+    color: #10b981;
+}
+
+.password-match-indicator.no-match {
+    color: #ef4444;
+}
+
+/* Tab Styles - Visual Hierarchy */
+.auth-tabs {
+    display: flex;
+    background: #f8fafc;
+    border-radius: 6px;
+    padding: 4px;
+    margin-bottom: 20px;
+    border: 1px solid #e2e8f0;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 12px 18px;
+    border: none;
+    background: transparent;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #64748b;
+    position: relative;
+}
+
+.tab-btn.active {
+    background: white;
+    color: #667eea;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+    transform: translateY(-2px);
+}
+
+.tab-btn:hover:not(.active) {
+    color: #475569;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translateY(-1px);
+}
+
+.tab-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    #app {
+        padding: 15px;
+        max-width: 100%;
+    }
+    
+    .auth-box {
+        padding: 28px 20px 20px;
+    }
+    
+    .logo {
+        font-size: 3rem;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .form-group.half-width {
+        flex: none;
+    }
+    
+    .floating-input {
+        height: 48px;
+    }
+    
+    .floating-input input {
+        padding: 20px 12px 6px 38px;
+        font-size: 0.9rem;
+    }
+    
+    .input-icon {
+        left: 12px;
+        font-size: 1.1rem;
+    }
+    
+    .floating-input label {
+        left: 38px;
+        font-size: 0.9rem;
+    }
+    
+    .floating-input input:focus + label,
+    .floating-input input:not(:placeholder-shown) + label,
+    .floating-input input:valid + label {
+        top: 16px;
+        font-size: 0.65rem;
+    }
+}
+
+/* High DPI / Retina Display Support */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .auth-container {
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    }
+    
+    .floating-input {
+        border-width: 1.5px;
+    }
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+/* Focus Management */
+:focus {
+    outline-offset: 2px;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Form Focus Glow */
+.floating-input:focus-within::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    border-radius: 8px;
+    z-index: -1;
+    opacity: 0.3;
+    filter: blur(4px);
+    transition: opacity 0.3s ease;
+}
+
+/* Typing Delay Animation */
+.validation-message.typing {
+    opacity: 0.5;
+}
+
+.validation-message.typing::after {
+    content: '...';
+    animation: typing 1s infinite;
+}
+
+@keyframes typing {
+    0%, 60%, 100% {
+        opacity: 0;
+    }
+    30% {
+        opacity: 1;
+    }
+}
